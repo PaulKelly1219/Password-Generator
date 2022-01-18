@@ -71,8 +71,9 @@ function generatePassword() {
   return password;
 }
 
+//Rework the functions to read the input box and check boxes using jQuery
 function getPasswordLength() {
-  var passwordLength = document.getElementById("numChars").value;
+  var passwordLength = $("#numChars").val();//document.getElementById("numChars").value;
   //console.log(passwordLength);
   var stringToNum = parseInt(passwordLength);
 
@@ -89,30 +90,30 @@ function getPasswordLength() {
 }
 
 function addUpperCase() {
-  var upperCase = document.getElementById("upperCase").checked;
+  var upperCase = $("#upperCase").val(); //document.getElementById("upperCase").checked;
   //console.log(upperCase);
   return upperCase;
 }
 
 function addLowerCase() {
-  var lowerCase = document.getElementById("lowerCase").checked;
+    var lowerCase = $("#lowerCase").val(); //document.getElementById("lowerCase").checked;
   //console.log(lowerCase);
   return lowerCase;
 }
 
 function addNumbers() {
-  var passwordNumeric = document.getElementById("digits").checked;
+    var passwordNumeric = $("#passwordNumeric").val(); //document.getElementById("digits").checked;
   //console.log(passwordNumeric);
   return passwordNumeric;
 }
 
 function addSpecialCharacters() {
-  var passwordSpecial = document.getElementById("specialCharacters").checked;
+    var passwordSpecial = $("#passwordSpecial").val(); //document.getElementById("specialCharacters").checked;
   //console.log(passwordSpecial);
   return passwordSpecial;
 }
 
-//with variables as getPasswordCharacters paramaters, we can get user's choice and push respective string values in options array.
+//with variables as getPasswordCharacters parameters, we can get user's choice and push respective string values in options array.
 //The resulting options are then used in a switch statement within generatePassword() to add the corresponding string values to password.
 //getRandomFromArray() randomizes how many from each option selected.
 function getPasswordCharacters(
@@ -146,16 +147,30 @@ function getRandomFromArray(array) {
 }
 
 function resetAll(){
-  document.getElementById("numChars").value = "";
-  document.getElementById("lowerCase").checked = false;
-  document.getElementById("upperCase").checked = false;
-  document.getElementById("digits").checked = false;
-  document.getElementById("specialCharacters").checked = false;
-  document.getElementById("password").value = "";
+  //document.getElementById("numChars").value = "";
+  //document.getElementById("lowerCase").checked = false;
+  //document.getElementById("upperCase").checked = false;
+  //document.getElementById("digits").checked = false;
+  //document.getElementById("specialCharacters").checked = false;
+  //document.getElementById("password").value = "";
+    //Reworked with jQuery
+    $("#numChars").val("");
+    $("#lowerCase").prop("checked",false);
+    $("#upperCase").prop("checked", false);
+    $("#digits").prop("checked", false);
+    $("#specialCharacters").prop("checked", false);
+    $("#password").val("");
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
+//generateBtn.addEventListener("click", writePassword);
+//Replace with jQuery .click() method
+$("#generate").click(function () {
+    writePassword();
+})
 //Add event listener to reset button
-resetBtn.addEventListener("click", resetAll);
+//resetBtn.addEventListener("click", resetAll);
+//Replace with jQuery .on() method (just another way to do it)
+$("#resetAll").on("click", function () {
+    resetAll();
+})
