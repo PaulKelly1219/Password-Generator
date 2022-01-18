@@ -1,3 +1,9 @@
+//Wrap in jQuery function
+
+$(document).ready(function () {
+
+
+
 //need arrays for each category.
 var arrUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var arrLowerCase = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -165,12 +171,14 @@ function resetAll(){
 // Add event listener to generate button
 //generateBtn.addEventListener("click", writePassword);
 //Replace with jQuery .click() method
-$("#generate").click(function () {
-    writePassword();
-})
+    $("#generate").click(function () {
+        writePassword();
+    });
 //Add event listener to reset button
 //resetBtn.addEventListener("click", resetAll);
 //Replace with jQuery .on() method (just another way to do it)
-$("#resetAll").on("click", function () {
-    resetAll();
-})
+    $("#resetAll").on("click", function () {
+        resetAll();
+    });
+
+});
